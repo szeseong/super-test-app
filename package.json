@@ -1,0 +1,20 @@
+{
+  "name": "super-test-app",
+  "version": "1.0.0",
+  "description": "Slack Api App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r dotenv/config index.js"
+  },
+  "keywords": [
+    "slack",
+    "api"
+  ],
+  "author": "SzeSeong.Lim",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^6.2.0"
+  }
+}
