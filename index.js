@@ -1,26 +1,10 @@
-console.log("hello");
-// require('dotenv').config()
+const { channel, channelPostMessage } = require("./api/chat");
 
-const axios = require("axios");
-
-const url = "https://slack.com/api/chat.postMessage";
-const token = process.env.API_TOKEN;
-
-function sendMessage(message) {
-  axios({
-    method: "post",
-    url: url,
-    headers: {
-      "content-type": 'application/json;charset=utf-8"',
-      Authorization: `Bearer ${token}`
-    },
-    data: {
-      channel: "#general",
-      text: message
-    }
-  }).then(response => {
-    console.log(response.data);
-  });
+//
+const message = process.argv[2];
+if (message) {
+  // channel("#general").postMessage(message);
+  // channelPostMessage("#general")(message);
+  const postGeneralMessage = channelPostMessage("#general");
+  postGeneralMessage(message);
 }
-
-sendMessage("Hello from Malaysia");
