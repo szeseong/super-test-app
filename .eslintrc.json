@@ -1,0 +1,17 @@
+{
+	"env": {
+		"node": true,
+		"commonjs": true,
+		"es6": true
+	},
+	"extends": ["eslint:recommended", "prettier"],
+	"parserOptions": {
+		"ecmaVersion": 2018,
+		"sourceType": "module"
+	},
+	"rules": {
+		"linebreak-style": ["error", "windows"],
+		"quotes": ["error", "double"],
+		"no-console": "off"
+	}
+}
