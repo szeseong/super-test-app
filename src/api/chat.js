@@ -1,7 +1,7 @@
-const axios = require("axios");
+const axios = require("axios")
 
-const token = process.env.API_TOKEN;
-const url = "https://slack.com/api/chat.postMessage";
+const token = process.env.API_TOKEN
+const url = "https://slack.com/api/chat.postMessage"
 
 function channelPostMessage(channel) {
   return async message => {
@@ -16,9 +16,9 @@ function channelPostMessage(channel) {
         channel,
         text: message,
       },
-    });
-    return response.data.ok;
-  };
+    })
+    return response.data.ok
+  }
 }
 
-module.exports = { channelPostMessage };
+module.exports = {channelPostMessage}
