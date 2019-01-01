@@ -4,8 +4,8 @@ const token = process.env.API_TOKEN;
 const url = "https://slack.com/api/chat.postMessage";
 
 function channelPostMessage(channel) {
-  return message => {
-    axios({
+  return async message => {
+    const response = await axios({
       method: "post",
       url: url,
       headers: {
@@ -16,9 +16,9 @@ function channelPostMessage(channel) {
         channel,
         text: message
       }
-    }).then(response => {
-      console.log(response.data);
     });
+
+    return response.ok;
   };
 }
 

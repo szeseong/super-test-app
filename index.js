@@ -6,5 +6,8 @@ if (message) {
   // channel("#general").postMessage(message);
   // channelPostMessage("#general")(message);
   const postGeneralMessage = channelPostMessage("#general");
-  postGeneralMessage(message);
+  const responseOk = postGeneralMessage(message);
+  if (responseOk) {
+    console.log("Message sent ✔️ ");
+  }
 }
