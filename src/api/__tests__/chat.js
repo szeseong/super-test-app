@@ -1,16 +1,35 @@
-const {channelPostMessage} = require("../chat")
+const API_TOKEN = "test-token"
+process.env = {
+  API_TOKEN,
+}
 
-jest.mock("../chat", () => {
-  return {
-    channelPostMessage: jest.fn(() => {
-      return () => Promise.resolve(true)
-    }),
-  }
-})
-const assert = require("assert")
+const {channelPostMessage} = require("../chat")
+const axios = require("axios")
+
+jest.mock("axios")
 
 test("Channel Post Message", async () => {
+  const mockResponse = {
+    data: {
+      ok: true,
+    },
+  }
+  axios.mockResolvedValue(mockResponse)
+
   const postGeneralMessage = channelPostMessage("#general")
   const responseOk = await postGeneralMessage("message")
-  assert.equal(responseOk, true)
+  expect(responseOk).toBe(true)
+
+  expect(axios).toHaveBeenCalledWith({
+    url: "https://slack.com/api/chat.postMessage",
+    method: "post",
+    data: {
+      channel: "#general",
+      text: "message",
+    },
+    headers: {
+      "content-type": "application/json;charset=utf-8",
+      Authorization: `Bearer ${API_TOKEN}`,
+    },
+  })
 })
