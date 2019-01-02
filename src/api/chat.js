@@ -4,6 +4,7 @@ const token = process.env.API_TOKEN
 const slackUrl = "https://slack.com/api/"
 const postMessageMethod = `${slackUrl}chat.postMessage`
 const getPermalinkMethod = `${slackUrl}chat.getPermalink`
+const deleteMethod = `${slackUrl}chat.delete`
 
 function channelPostMessage(channel) {
   return async message => {
@@ -37,4 +38,21 @@ function channelGetPermalink(channel) {
   }
 }
 
-module.exports = {channelPostMessage, channelGetPermalink}
+function channelDeleteMessage(channel) {
+  return async ts => {
+    const response = await axios({
+      method: "post",
+      url: deleteMethod,
+      headers: {
+        "content-type": "application/json;charset=utf-8",
+        Authorization: `Bearer ${token}`,
+      },
+      data: {
+        channel,
+        ts,
+      },
+    })
+    return response.data
+  }
+}
+module.exports = {channelPostMessage, channelGetPermalink, channelDeleteMessage}

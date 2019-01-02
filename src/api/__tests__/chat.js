@@ -3,7 +3,11 @@ process.env = {
   API_TOKEN,
 }
 
-const {channelPostMessage, channelGetPermalink} = require("../chat")
+const {
+  channelPostMessage,
+  channelGetPermalink,
+  channelDeleteMessage,
+} = require("../chat")
 const axios = require("axios")
 
 jest.mock("axios")
@@ -90,4 +94,33 @@ test("Get Permalink", async () => {
   )
   expect(ok).toBe(true)
   expect(channel).toBe("C1H9RESGA")
+})
+
+test("Delete Message", async () => {
+  const mockResponse = {
+    data: {
+      ok: true,
+      channel: "C024BE91L",
+      ts: "1401383885.000061",
+    },
+  }
+  axios.mockResolvedValue(mockResponse)
+
+  const deleteMessage = channelDeleteMessage("C1234567890")
+  const {ts, ok, channel} = await deleteMessage("1234567890.123456")
+  expect(axios).toHaveBeenCalledWith({
+    url: "https://slack.com/api/chat.delete",
+    method: "post",
+    headers: {
+      "content-type": "application/json;charset=utf-8",
+      Authorization: `Bearer ${API_TOKEN}`,
+    },
+    data: {
+      channel: "C1234567890",
+      ts: "1234567890.123456",
+    },
+  })
+  expect(ts).toBe("1401383885.000061")
+  expect(ok).toBe(true)
+  expect(channel).toBe("C024BE91L")
 })

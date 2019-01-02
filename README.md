@@ -23,9 +23,9 @@ $ npm run send 'Happy New Year ✔️ '
 
 | Method                                                                 |                      Descripttion                      | Done |
 | ---------------------------------------------------------------------- | :----------------------------------------------------: | ---: |
-| [chat.delete](https://api.slack.com/methods/chat.delete)               |                   Deletes a message.                   |    ️ |
-| [chat.getPermalink](https://api.slack.com/methods/chat.getPermalink)   | Retrieve a permalink URL for a specific extant message |      |
+| [chat.delete](https://api.slack.com/methods/chat.delete)               |                   Deletes a message.                   |✔️    |
+| [chat.getPermalink](https://api.slack.com/methods/chat.getPermalink)   | Retrieve a permalink URL for a specific extant message |✔️    |
 | [chat.postEphemeral](https://api.slack.com/methods/chat.postEphemeral) |   Sends an ephemeral message to a user in a channel.   |      |
-| [chat.postMessage](https://api.slack.com/methods/chat.postMessage)     |             Sends a message to a channel.              |   ✔️ |
+| [chat.postMessage](https://api.slack.com/methods/chat.postMessage)     |             Sends a message to a channel.              |✔️    |
 | [chat.unfurl](https://api.slack.com/methods/chat.unfurl)               |  Provide custom unfurl behavior for user-posted URLs   |      |
 | [chat.update](https://api.slack.com/methods/chat.update)               |                   Updates a message.                   |      |
