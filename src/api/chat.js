@@ -19,8 +19,7 @@ function channelPostMessage(channel) {
         text: message,
       },
     })
-    console.log(response.data)
-    return response.data.ok
+    return response.data
   }
 }
 
@@ -30,11 +29,11 @@ function channelGetPermalink(channel) {
       method: "get",
       url: `${getPermalinkMethod}?channel=${channel}&message_ts=${message_ts}`,
       headers: {
+        "content-type": "application/x-www-form-urlencoded",
         Authorization: `Bearer ${token}`,
       },
     })
-    console.log(response.data)
-    return response.data.ok
+    return response.data
   }
 }
 
